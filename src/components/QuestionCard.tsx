@@ -39,7 +39,6 @@ const QuestionText = styled.p`
   font-size: 20px;
   margin-bottom: 15px;
 `;
-
 const AnswerButton = styled.button`
   margin-bottom: 10px;
   padding: 10px;
@@ -82,7 +81,7 @@ function QuestionCard({
           {answers.map((answer, index) => (
             <div key={index}>
               <AnswerButton
-                disabled={userAnswer}
+                disabled={userAnswer !== undefined}
                 onClick={() => callback(answer)}
               >
                 <span dangerouslySetInnerHTML={{ __html: answer }} />

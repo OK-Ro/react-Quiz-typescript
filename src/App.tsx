@@ -3,7 +3,7 @@ import { fetchQuizQuestions, Question } from "./Api";
 import QuestionCard from "./components/QuestionCard";
 import { Difficulty } from "./Api";
 
-const TOTAL_QUESTIONS = 20;
+const TOTAL_QUESTIONS = 10;
 
 type UserAnswer = {
   question: string;
@@ -55,6 +55,9 @@ function App() {
       };
 
       setUserAnswers((prev) => [...prev, userAnswer]);
+
+      // Move on to the next question
+      nextQuestion();
     }
   };
 
