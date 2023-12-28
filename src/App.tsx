@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { fetchQuizQuestions, Question } from "./Api";
 import QuestionCard from "./components/QuestionCard";
 import { Difficulty } from "./Api";
+import Results from "./Results";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -96,13 +97,13 @@ function App() {
         />
       )}
       {!gameOver &&
-      !loading &&
       userAnswers.length === number + 1 &&
-      number !== TOTAL_QUESTIONS - 1 ? (
+      number === TOTAL_QUESTIONS - 1 ? (
         <button className="next" onClick={nextQuestion}>
           Next Question
         </button>
       ) : null}
+      {true && <Results userAnswers={userAnswers} score={score} />}
     </div>
   );
 }
