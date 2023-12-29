@@ -74,15 +74,41 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>REACT QUIZ</h1>
+    <div
+      className="App"
+      style={{
+        textAlign: "center",
+        fontFamily: "Arial, sans-serif",
+        color: "#333",
+      }}
+    >
+      <h1 style={{ fontSize: "2em", margin: "20px 0", color: "#4caf50" }}>
+        REACT QUIZ
+      </h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button className="start" onClick={startTrivia}>
+        <button
+          style={{
+            backgroundColor: "#4caf50",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            padding: "10px 20px",
+            fontSize: "1em",
+            cursor: "pointer",
+          }}
+          onClick={startTrivia}
+        >
           Start
         </button>
       ) : null}
-      {!gameOver ? <p className="score">Score: {score}</p> : null}
-      {loading && <p>Loading Questions...</p>}
+      {!gameOver ? (
+        <p style={{ fontSize: "1.5em", marginTop: "20px" }}>Score: {score}</p>
+      ) : null}
+      {loading && (
+        <p style={{ fontSize: "1.2em", marginTop: "20px" }}>
+          Loading Questions...
+        </p>
+      )}
       {!loading && !gameOver && (
         <QuestionCard
           questionNr={number + 1}
@@ -99,7 +125,19 @@ function App() {
       {!gameOver &&
       userAnswers.length === number + 1 &&
       number === TOTAL_QUESTIONS - 1 ? (
-        <button className="next" onClick={nextQuestion}>
+        <button
+          style={{
+            backgroundColor: "#4caf50",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            padding: "10px 20px",
+            fontSize: "1em",
+            marginTop: "20px",
+            cursor: "pointer",
+          }}
+          onClick={nextQuestion}
+        >
           Next Question
         </button>
       ) : null}

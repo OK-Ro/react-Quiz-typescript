@@ -13,46 +13,62 @@ type ResultsProps = {
   score: number;
 };
 
-const ResultsContainer = styled.div`
+const StyledResultsContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: #61dafb;
 `;
 
-const ResultCard = styled.div`
-  width: 400px;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid #ddd;
+const StyledResultCard = styled.div`
+  width: 600px;
+  padding: 40px;
+  border: 2px solid #61dafb;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+`;
+
+const ResultTitle = styled.h2`
+  font-size: 28px;
+  margin-bottom: 20px;
 `;
 
 const ResultText = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 15px;
+`;
+
+const StyledResultList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+const StyledResultListItem = styled.li`
+  font-size: 16px;
+  margin-bottom: 10px;
 `;
 
 const Results: React.FC<ResultsProps> = ({ userAnswers, score }) => {
   return (
-    <ResultsContainer>
-      <ResultCard>
-        <ResultText>Your Score: {score}</ResultText>
+    <StyledResultsContainer>
+      <StyledResultCard>
+        <ResultTitle>Your Score: {score}</ResultTitle>
         <ResultText>Results:</ResultText>
-        <ul>
+        <StyledResultList>
           {userAnswers.map((answer, index) => (
-            <li key={index}>
+            <StyledResultListItem key={index}>
               {answer.question} - Your Answer: {answer.answer} -{" "}
               {answer.correct ? "Correct" : "Incorrect"}
-            </li>
+            </StyledResultListItem>
           ))}
-        </ul>
-      </ResultCard>
-    </ResultsContainer>
+        </StyledResultList>
+      </StyledResultCard>
+    </StyledResultsContainer>
   );
 };
 

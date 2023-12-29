@@ -10,43 +10,45 @@ type Props = {
   totalQuestions: number;
 };
 
-const QuizContainer = styled.div`
+const StyledQuizContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  background-color: #282c34;
+  color: #fff;
 `;
 
-const QuestionCardContainer = styled.div`
-  width: 400px;
-  padding: 20px;
+const StyledQuestionCardContainer = styled.div`
+  width: 600px;
+  padding: 40px;
   margin: 20px;
-  border: 1px solid #ddd;
+  border: 2px solid #61dafb;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
 `;
 
-const Number = styled.p`
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-
-const QuestionText = styled.p`
+const StyledNumber = styled.p`
   font-size: 20px;
-  margin-bottom: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
 `;
-const AnswerButton = styled.button`
-  margin-bottom: 10px;
-  padding: 10px;
+
+const StyledQuestionText = styled.p`
+  font-size: 24px;
+  margin-bottom: 30px;
+`;
+
+const StyledAnswerButton = styled.button`
+  margin-bottom: 20px;
+  padding: 15px;
   width: 100%;
   background-color: #4caf50;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -69,28 +71,28 @@ function QuestionCard({
   totalQuestions,
 }: Props) {
   return (
-    <QuizContainer>
-      <QuestionCardContainer>
-        <Number>
+    <StyledQuizContainer>
+      <StyledQuestionCardContainer>
+        <StyledNumber>
           Question: {questionNr} / {totalQuestions}
-        </Number>
+        </StyledNumber>
 
-        <QuestionText dangerouslySetInnerHTML={{ __html: question }} />
+        <StyledQuestionText dangerouslySetInnerHTML={{ __html: question }} />
 
         <div>
           {answers.map((answer, index) => (
             <div key={index}>
-              <AnswerButton
+              <StyledAnswerButton
                 disabled={userAnswer !== undefined}
                 onClick={() => callback(answer)}
               >
                 <span dangerouslySetInnerHTML={{ __html: answer }} />
-              </AnswerButton>
+              </StyledAnswerButton>
             </div>
           ))}
         </div>
-      </QuestionCardContainer>
-    </QuizContainer>
+      </StyledQuestionCardContainer>
+    </StyledQuizContainer>
   );
 }
 
