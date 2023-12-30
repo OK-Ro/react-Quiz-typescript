@@ -10,13 +10,23 @@ type Props = {
   totalQuestions: number;
 };
 
-const StyledQuizContainer = styled.div`
+const StyledVerticalContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   background-color: #282c34;
   color: #fff;
+`;
+
+const StyledProgressBarContainer = styled.div`
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
 `;
 
 const StyledQuestionCardContainer = styled.div`
@@ -39,6 +49,7 @@ const StyledNumber = styled.p`
 const StyledQuestionText = styled.p`
   font-size: 24px;
   margin-bottom: 30px;
+  color: #333;
 `;
 
 const StyledAnswerButton = styled.button`
@@ -62,6 +73,19 @@ const StyledAnswerButton = styled.button`
   }
 `;
 
+const StyledProgress = styled.div<{ progress: number }>`
+  width: ${(props) => props.progress}%;
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+`;
+
+const StyledMario = styled.span`
+  font-size: 20px;
+  display: inline-block;
+`;
+
 function QuestionCard({
   question,
   answers,
@@ -70,8 +94,16 @@ function QuestionCard({
   questionNr,
   totalQuestions,
 }: Props) {
+  const progress = ((questionNr - 1) / totalQuestions) * 100;
+
   return (
-    <StyledQuizContainer>
+    <StyledVerticalContainer>
+      <StyledProgressBarContainer>
+        <StyledProgress progress={progress}>
+          <StyledMario>🍄</StyledMario>
+        </StyledProgress>
+      </StyledProgressBarContainer>
+
       <StyledQuestionCardContainer>
         <StyledNumber>
           Question: {questionNr} / {totalQuestions}
@@ -92,7 +124,7 @@ function QuestionCard({
           ))}
         </div>
       </StyledQuestionCardContainer>
-    </StyledQuizContainer>
+    </StyledVerticalContainer>
   );
 }
 
