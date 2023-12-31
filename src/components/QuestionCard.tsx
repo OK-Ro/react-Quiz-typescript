@@ -81,11 +81,9 @@ const StyledProgress = styled.div<{ progress: number }>`
   transition: width 0.3s ease;
 `;
 
-const StyledMario = styled.span`
-  font-size: 20px;
-  display: inline-block;
+const StyledMarioIcon = styled.img`
+  width: 30px; /* Adjust the size as needed */
 `;
-
 function QuestionCard({
   question,
   answers,
@@ -100,7 +98,11 @@ function QuestionCard({
     <StyledVerticalContainer>
       <StyledProgressBarContainer>
         <StyledProgress progress={progress}>
-          <StyledMario>🍄</StyledMario>
+          {/* Replace the Mario emoji with the Mario icon */}
+          <StyledMarioIcon
+            src="https://th.bing.com/th/id/OIP.qcbpyuAQwAlBx46BanNxhAHaHk?rs=1&pid=ImgDetMain"
+            alt="Mario Icon"
+          />
         </StyledProgress>
       </StyledProgressBarContainer>
 
